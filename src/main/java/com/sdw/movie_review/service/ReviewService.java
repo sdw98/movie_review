@@ -42,4 +42,8 @@ public class ReviewService {
 
         return reviewRepository.save(existReview);
     }
+
+    public void delete(Long id) {
+        reviewRepository.deleteById(id);
+    }
 }

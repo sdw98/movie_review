@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -51,5 +52,12 @@ public class ReviewController {
         review.setComment(reviewDto.getComment());
 
         return reviewService.update(id, review);
+    }
+
+    @DeleteMapping("/api/reviews/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        reviewService.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
